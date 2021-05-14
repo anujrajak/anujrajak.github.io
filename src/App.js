@@ -11,6 +11,7 @@ import { Education } from './sections/Education';
 import { Career } from './sections/Career';
 import { Skills }  from './sections/Skills';
 import { Achievements } from './sections/Achievements';
+import { Footer } from "./sections/Footer";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Education />
         <Skills />
         <Achievements />
+        <Footer />
       </>}
     </div>
   );
