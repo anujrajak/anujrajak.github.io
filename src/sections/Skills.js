@@ -5,6 +5,14 @@ const Skills = () => {
             img: 'https://img.icons8.com/color/344/javascript.png'
         },
         {
+            alt: 'react',
+            img: 'https://img.icons8.com/color/344/react-native.png'
+        },
+        {
+            alt: 'typescript',
+            img: 'https://img.icons8.com/color/344/typescript.png'
+        },
+        {
             alt: 'angular',
             img: 'https://img.icons8.com/color/344/angularjs.png'
         },
@@ -27,10 +35,6 @@ const Skills = () => {
         {
             alt: 'mysql',
             img: 'https://img.icons8.com/color/344/mysql.png'
-        },
-        {
-            alt: 'react-native',
-            img: 'https://img.icons8.com/color/344/react-native.png'
         },
         {
             alt: 'wordpress',
