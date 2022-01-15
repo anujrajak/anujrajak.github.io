@@ -1,4 +1,4 @@
-import avatar from "../avatar.jpg";
+// import avatar from "../avatar.jpg";
 
 const Profile = () => {
   return (
