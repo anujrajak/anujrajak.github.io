@@ -1,0 +1,14 @@
+/* Navigation links */
+.nav-link {
+  @apply text-zinc-700 dark:text-zinc-300 hover:underline transition;
+}
+
+/* Primary Button */
+.btn-primary {
+  @apply bg-zinc-900 dark:bg-zinc-100 text-white dark:text-black font-semibold py-3 px-6 rounded-lg transition hover:bg-zinc-700 dark:hover:bg-zinc-300;
+}
+
+#intro-left {
+  background-color: #000000;
+  background-image: url("./assets/img/user.png");
+}
