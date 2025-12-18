@@ -165,6 +165,16 @@
         transform: translateY(-2px);
       }
 
+      .icon-link img {
+        transition: filter 0.3s ease;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .icon-link img {
+          filter: invert(1);
+        }
+      }
+
       /* Experience Timeline */
       .experience-item {
         position: relative;
@@ -739,10 +749,13 @@
       <div class="max-w-7xl mx-auto px-6 md:px-8 w-full">
         <div class="max-w-5xl">
           <h2 class="heading text-4xl md:text-5xl font-bold mb-12">Contact</h2>
-          <div class="grid md:grid-cols-2 gap-8">
+          <p class="text-base md:text-lg mb-8 text-gray-600 dark:text-gray-400">
+            If you would like to contact me, we can connect below
+          </p>
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
             <div>
-              <h3 class="text-lg font-semibold mb-3">Email</h3>
-                <a
+              <h3 class="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">Email</h3>
+              <a
                 href="mailto:mr.anujrajak@gmail.com"
                 class="text-lg hover:underline text-gray-700 dark:text-gray-300"
               >
@@ -750,8 +763,50 @@
               </a>
             </div>
             <div>
-              <h3 class="text-lg font-semibold mb-3">Location</h3>
-                <p class="text-lg text-gray-700 dark:text-gray-300">Pune, India</p>
+              <h3 class="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">Location</h3>
+              <p class="text-lg text-gray-700 dark:text-gray-300">Pune, India</p>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Social</h3>
+            <div class="flex gap-6">
+              <a
+                href="https://github.com/anujrajak"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="icon-link"
+                aria-label="GitHub"
+              >
+                <img
+                  src="https://img.icons8.com/?size=100&id=62856&format=png&color=000000"
+                  alt="GitHub"
+                  class="w-8 h-8"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/anuj-rajak/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="icon-link"
+                aria-label="LinkedIn"
+              >
+                <img
+                  src="https://img.icons8.com/?size=100&id=98960&format=png&color=000000"
+                  alt="LinkedIn"
+                  class="w-8 h-8"
+                />
+              </a>
+              <a
+                href="mailto:mr.anujrajak@gmail.com"
+                class="icon-link"
+                aria-label="Email"
+              >
+                <img
+                  src="https://img.icons8.com/?size=100&id=YRRhCXfA0Vd0&format=png&color=000000"
+                  alt="Email"
+                  class="w-8 h-8"
+                />
+              </a>
             </div>
           </div>
         </div>
