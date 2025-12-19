@@ -1,11 +1,11 @@
-// Smooth scroll for navigation links with better performance
+// Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute("href"));
     if (target) {
-      const offset = 80;
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      const offset = 100;
+      const targetPosition = target.offsetTop - offset;
       window.scrollTo({
         top: targetPosition,
         behavior: "smooth",
@@ -19,7 +19,7 @@ const navTabs = document.querySelectorAll(".nav-tab");
 const sections = document.querySelectorAll("section[id]");
 
 function updateActiveNav() {
-  const scrollY = window.pageYOffset + 200;
+  const scrollY = window.pageYOffset + 150;
 
   sections.forEach((section) => {
     const sectionHeight = section.offsetHeight;
@@ -37,7 +37,7 @@ function updateActiveNav() {
   });
 }
 
-window.addEventListener("scroll", updateActiveNav, { passive: true });
+window.addEventListener("scroll", updateActiveNav);
 updateActiveNav();
 
 // Intersection Observer for slide-up animations
