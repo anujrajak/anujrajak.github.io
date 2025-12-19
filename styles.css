@@ -1,0 +1,202 @@
+* {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.heading {
+  font-family: "Space Grotesk", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0a0a0a;
+    color: #e5e5e5;
+  }
+}
+
+/* Header */
+header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+@media (prefers-color-scheme: dark) {
+  header {
+    background: rgba(10, 10, 10, 0.95);
+  }
+}
+
+/* Nav Links */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+  color: #666;
+}
+
+.nav-link:hover {
+  color: #1a1a1a;
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav-link {
+    color: #a3a3a3;
+  }
+  .nav-link:hover {
+    color: #e5e5e5;
+  }
+}
+
+/* Experience Timeline */
+.experience-card {
+  position: relative;
+  padding-left: 2.5rem;
+  padding-bottom: 4rem;
+}
+
+.experience-card::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  z-index: 2;
+}
+
+.experience-card::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  top: 1.25rem;
+  width: 1px;
+  height: calc(100% - 0.5rem);
+  background: #e5e5e5;
+  z-index: 1;
+}
+
+.experience-card:last-child::after {
+  height: 50vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  .experience-card::before {
+    background: #e5e5e5;
+  }
+  .experience-card::after {
+    background: #404040;
+  }
+}
+
+/* Custom Cursor Sections */
+#hero-section,
+#work,
+#experience,
+#about,
+#contact {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  font-size: 36px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+  user-select: none;
+}
+
+.hero-text {
+  font-family: "Poiret One", sans-serif;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.hero-text-small {
+  font-family: "Poiret One", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Full Width Horizontal Line */
+.full-width-line {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  border: none;
+  border-top: 1px solid #e5e5e5;
+}
+
+@media (prefers-color-scheme: dark) {
+  .full-width-line {
+    border-top-color: #404040;
+  }
+}
+
+/* Contact Section */
+.contact-section {
+  width: 100%;
+  aspect-ratio: 1440 / 560;
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 0;
+}
+
+/* Map Background */
+.map-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.15;
+  background-image: url("assets/imgs/map.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Social Links */
+.social-link {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.7;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+.social-link {
+  color: #666;
+}
+
+.social-link:hover {
+  color: #1a1a1a;
+}
+
+@media (prefers-color-scheme: dark) {
+  .social-link {
+    color: #a3a3a3;
+  }
+  .social-link:hover {
+    color: #e5e5e5;
+  }
+}
+
