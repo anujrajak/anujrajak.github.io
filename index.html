@@ -19,16 +19,7 @@
     />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
-    <meta
-      name="theme-color"
-      content="#ffffff"
-      media="(prefers-color-scheme: light)"
-    />
-    <meta
-      name="theme-color"
-      content="#0a0a0a"
-      media="(prefers-color-scheme: dark)"
-    />
+    <meta name="theme-color" content="#ffffff" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -56,7 +47,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <script>
       tailwind.config = {
-        darkMode: "media",
+        darkMode: false,
       };
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -74,6 +65,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://w.soundcloud.com/player/api.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -82,12 +74,13 @@
         <!-- Left Side: Name and Subtitle -->
         <div>
           <h1
-            class="text-lg md:text-xl font-normal text-gray-900 dark:text-gray-100"
+            class="text-lg md:text-xl font-normal text-gray-900"
             style="font-family: 'Lato', sans-serif"
           >
-            Anuj Rajak
+            <span class="md:hidden">AR</span>
+            <span class="hidden md:inline">Anuj Rajak</span>
           </h1>
-          <p class="text-xs font-light text-gray-600 dark:text-gray-400">
+          <p class="text-xs font-light text-gray-600 hidden md:block">
             Software Engineer
           </p>
         </div>
@@ -100,6 +93,15 @@
           >
           <a href="#about" class="nav-link text-xs font-medium">About</a>
           <a href="#contact" class="nav-link text-xs font-medium">Contact</a>
+          <a
+            href="assets/resume.pdf"
+            download
+            class="nav-link text-xs font-medium flex items-center gap-1"
+            aria-label="Resume"
+          >
+            Resume
+            <i data-feather="arrow-up-right" class="w-3 h-3"></i>
+          </a>
         </nav>
       </div>
     </header>
@@ -109,27 +111,95 @@
       <!-- Hero Section -->
       <section
         id="hero-section"
-        class="h-screen flex flex-col items-center justify-center px-6 md:px-8 relative"
+        class="h-screen flex items-center px-6 md:px-8 relative"
       >
-        <div class="max-w-4xl mx-auto text-center">
-          <p class="hero-text text-gray-900 dark:text-gray-100 mb-4">
-            Hey, I'm Anuj
-          </p>
-          <p class="hero-text-small text-gray-900 dark:text-gray-100">
-            a Software Engineer specializing in the MERN stack, curious about
-            how well-crafted systems and interfaces influence the way people
-            interact with technology.
-          </p>
+        <div
+          class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-start md:items-center h-full"
+        >
+          <!-- Left Side: Chip -->
+          <div class="flex flex-col justify-center items-center md:items-start">
+            <div class="flex items-center gap-3 hero-chip-container">
+              <div class="hero-chip">
+                <span class="hero-chip-text">👋 Hi, I'm Anuj</span>
+              </div>
+              <div class="hero-play-button-container">
+                <button
+                  class="hero-play-button"
+                  aria-label="Play"
+                  id="play-button"
+                >
+                  <i data-feather="play" class="w-5 h-5 play-icon"></i>
+                  <i
+                    data-feather="pause"
+                    class="w-5 h-5 pause-icon"
+                    style="display: none"
+                  ></i>
+                </button>
+                <span class="hero-play-tooltip"
+                  >Click play while you read through</span
+                >
+              </div>
+              <!-- SoundCloud Player (Hidden) -->
+              <iframe
+                id="soundcloud-player"
+                width="100%"
+                height="166"
+                scrolling="no"
+                frameborder="no"
+                allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1634828703&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                style="display: none"
+              ></iframe>
+            </div>
+            <p
+              class="hero-text-small text-gray-900 mt-3 text-center md:text-left"
+            >
+              Software Engineer with<br />
+              5+ years of experience in making<br />
+              complex systems feel human
+            </p>
+            <!-- Explore my work for small screens -->
+            <div class="mt-6 md:hidden">
+              <a
+                href="#work"
+                class="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors justify-center"
+              >
+                <i data-feather="arrow-down" class="w-4 h-4"></i>
+                <span class="text-sm font-light">Explore my work</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Side: Avatar Image -->
+          <div
+            class="flex justify-center md:justify-end items-end mt-8 md:mt-0 md:h-full self-end"
+          >
+            <div class="avatar-container relative cursor-pointer">
+              <img
+                src="assets/imgs/avatar.png"
+                alt="Anuj Rajak"
+                class="hero-avatar avatar-main"
+                id="avatar-main"
+              />
+              <img
+                src="assets/imgs/original-avatar.png"
+                alt="Anuj Rajak"
+                class="hero-avatar avatar-original"
+                id="avatar-original"
+                style="display: none"
+              />
+            </div>
+          </div>
         </div>
 
-        <!-- Bottom Arrow with Text -->
+        <!-- Bottom Arrow with Text (Desktop only) -->
         <div
-          class="absolute left-1/2 transform -translate-x-1/2"
+          class="absolute left-1/2 transform -translate-x-1/2 hidden md:block"
           style="bottom: 6rem"
         >
           <a
             href="#work"
-            class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+            class="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
           >
             <i data-feather="arrow-down" class="w-4 h-4"></i>
             <span class="text-sm font-light">Explore my work</span>
@@ -141,7 +211,7 @@
       <section id="work" class="min-h-screen pt-10 px-6 md:px-8">
         <div class="max-w-7xl mx-auto">
           <h2
-            class="heading text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100 uppercase"
+            class="heading text-4xl md:text-5xl font-bold mb-4 text-gray-900 uppercase"
           >
             Selected work
           </h2>
@@ -164,7 +234,7 @@
             <div class="flex items-start justify-between gap-4">
               <div class="flex-1">
                 <h3
-                  class="heading mb-2 dark:text-gray-100"
+                  class="heading mb-2"
                   style="font-size: 17px; font-weight: bold; color: #1a1a1a"
                 >
                   GlamGuider
@@ -200,7 +270,7 @@
             <div class="flex items-start justify-between gap-4">
               <div class="flex-1">
                 <h3
-                  class="heading mb-2 dark:text-gray-100"
+                  class="heading mb-2"
                   style="font-size: 17px; font-weight: bold; color: #1a1a1a"
                 >
                   Nazaara Retreat
@@ -236,7 +306,7 @@
             <div class="flex items-start justify-between gap-4">
               <div class="flex-1">
                 <h3
-                  class="heading mb-2 dark:text-gray-100"
+                  class="heading mb-2"
                   style="font-size: 17px; font-weight: bold; color: #1a1a1a"
                 >
                   @rhngui/patternfly-react-renderer
@@ -267,9 +337,9 @@
       <section id="experience" class="min-h-screen pt-10 px-6 md:px-8">
         <div class="max-w-7xl mx-auto">
           <h2
-            class="heading text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100 uppercase"
+            class="heading text-4xl md:text-5xl font-bold mb-4 text-gray-900 uppercase"
           >
-            Experience
+            Experience & Education
           </h2>
           <p
             class="font-normal mb-12"
@@ -289,12 +359,10 @@
                   class="w-10 h-10 rounded flex-shrink-0"
                 />
                 <div class="flex-1">
-                  <h3
-                    class="heading text-lg font-bold text-gray-900 dark:text-gray-100 mb-1"
-                  >
+                  <h3 class="heading text-lg font-bold text-gray-900 mb-1">
                     Software Engineer
                   </h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                  <p class="text-sm text-gray-600 mb-1">
                     <a
                       href="https://www.redhat.com/en"
                       target="_blank"
@@ -305,8 +373,19 @@
                     </a>
                     <span> · Full-time</span>
                   </p>
-                  <p class="text-xs text-gray-500 dark:text-gray-500">
+                  <p class="text-xs text-gray-500">
                     Jan 2022 - Present · 4 yrs · Pune, India
+                  </p>
+                  <p
+                    class="text-sm text-gray-700 mt-3"
+                    style="line-height: 1.6"
+                  >
+                    Collaborating with the Experience Engineering (XE) and UX
+                    Engagement & Engineering teams to design and integrate
+                    agentic AI workflows, enhance and add features to the
+                    customer portal, and improve unit test coverage to ensure
+                    better QA, performance, and faster, more seamless customer
+                    experiences.
                   </p>
                 </div>
               </div>
@@ -321,12 +400,10 @@
                   class="w-10 h-10 rounded flex-shrink-0"
                 />
                 <div class="flex-1">
-                  <h3
-                    class="heading text-lg font-bold text-gray-900 dark:text-gray-100 mb-1"
-                  >
+                  <h3 class="heading text-lg font-bold text-gray-900 mb-1">
                     Software Engineer
                   </h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                  <p class="text-sm text-gray-600 mb-1">
                     <a
                       href="https://in.nec.com/"
                       target="_blank"
@@ -337,8 +414,20 @@
                     </a>
                     <span> · Full-time</span>
                   </p>
-                  <p class="text-xs text-gray-500 dark:text-gray-500">
+                  <p class="text-xs text-gray-500">
                     Jul 2019 - Dec 2021 · 2 yrs 6 mos · Mumbai, India
+                  </p>
+                  <p
+                    class="text-sm text-gray-700 mt-3"
+                    style="line-height: 1.6"
+                  >
+                    Built and maintained 30+ reusable React and ExtJS components
+                    following MVVM/MVC architecture, improving development speed
+                    by 25–30%. Collaborated with Business Analysts and Product
+                    Owners to deliver 10+ core features, resolving 50+ issues to
+                    enhance application stability, while maintaining 80%+ test
+                    coverage using Jest, React Testing Library, and Jasmine with
+                    defect tracking via JIRA.
                   </p>
                 </div>
               </div>
@@ -353,12 +442,10 @@
                   class="w-10 h-10 rounded flex-shrink-0"
                 />
                 <div class="flex-1">
-                  <h3
-                    class="heading text-lg font-bold text-gray-900 dark:text-gray-100 mb-1"
-                  >
+                  <h3 class="heading text-lg font-bold text-gray-900 mb-1">
                     Junior Web Developer
                   </h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                  <p class="text-sm text-gray-600 mb-1">
                     <a
                       href="http://techglobalsolution.com/"
                       target="_blank"
@@ -369,8 +456,55 @@
                     </a>
                     <span> · Internship</span>
                   </p>
-                  <p class="text-xs text-gray-500 dark:text-gray-500">
+                  <p class="text-xs text-gray-500">
                     Jan 2018 - Apr 2018 · 4 mos · Madhya Pradesh, India
+                  </p>
+                  <p
+                    class="text-sm text-gray-700 mt-3"
+                    style="line-height: 1.6"
+                  >
+                    Contributed to a health sector application by designing and
+                    implementing user interfaces, while building microservices,
+                    database schemas, and integrating APIs to enhance
+                    functionality and support mobile application development.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Experience 4: Education -->
+            <div class="experience-card">
+              <div class="flex items-start gap-4">
+                <img
+                  src="https://www.globalengineeringcollege.com/uploads/images/logo/GlobalLogoB.png"
+                  alt="GLOBAL NATURE CARE GROUP SANGATHAN INSTITUTION"
+                  class="w-10 h-10 rounded flex-shrink-0"
+                />
+                <div class="flex-1">
+                  <h3 class="heading text-lg font-bold text-gray-900 mb-1">
+                    Bachelor of Engineering - Computer Science
+                  </h3>
+                  <p class="text-sm text-gray-600 mb-1">
+                    <a
+                      href="https://www.globalengineeringcollege.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hover:underline"
+                    >
+                      GLOBAL NATURE CARE GROUP SANGATHAN INSTITUTION, Jabalpur
+                    </a>
+                    <span> · Full-time</span>
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2015 - 2019 · 4 yrs · Jabalpur, India
+                  </p>
+                  <p
+                    class="text-sm text-gray-700 mt-3"
+                    style="line-height: 1.6"
+                  >
+                    Completed a Bachelor of Engineering in Computer Science,
+                    gaining a strong foundation in programming, data structures,
+                    databases, and software engineering principles.
                   </p>
                 </div>
               </div>
@@ -382,11 +516,24 @@
       <!-- About Me Section -->
       <section id="about" class="py-10 px-6 md:px-8">
         <div class="max-w-7xl mx-auto">
-          <h2
-            class="heading text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100 uppercase"
-          >
-            About me
-          </h2>
+          <div class="flex items-center justify-between mb-4">
+            <h2
+              class="heading text-4xl md:text-5xl font-bold text-gray-900 uppercase"
+            >
+              About me
+            </h2>
+            <button
+              id="highlight-toggle"
+              class="highlight-toggle-btn"
+              aria-label="Toggle keyword highlighting"
+            >
+              <i
+                data-feather="eye"
+                class="w-6 h-6 highlight-icon"
+                id="highlight-icon"
+              ></i>
+            </button>
+          </div>
           <p
             class="font-normal mb-12"
             style="font-size: 16px; color: #737373; font-weight: 400"
@@ -394,32 +541,23 @@
             A bit about who I am and what I do
           </p>
 
-          <div class="max-w-4xl">
-            <div class="space-y-6">
-              <p
-                style="font-size: 17px; line-height: 1.8; color: #1a1a1a"
-                class="dark:text-gray-300"
-              >
+          <div class="max-w-6xl">
+            <div class="space-y-6" id="about-content">
+              <p style="font-size: 17px; line-height: 1.8; color: #1a1a1a">
                 I'm a Software Engineer with over 6 years of experience building
                 scalable, production-ready web applications. I specialize in the
                 MERN stack (MongoDB, Express, React, Node.js) and have a passion
                 for creating well-crafted systems and interfaces that enhance
                 how people interact with technology.
               </p>
-              <p
-                style="font-size: 17px; line-height: 1.8; color: #1a1a1a"
-                class="dark:text-gray-300"
-              >
+              <p style="font-size: 17px; line-height: 1.8; color: #1a1a1a">
                 Currently working at Red Hat, I focus on developing robust
                 frontend solutions using React, Next.js, and TypeScript. I'm
                 particularly interested in the intersection of design and
                 engineering - how thoughtful architecture and clean code can
                 create delightful user experiences.
               </p>
-              <p
-                style="font-size: 17px; line-height: 1.8; color: #1a1a1a"
-                class="dark:text-gray-300"
-              >
+              <p style="font-size: 17px; line-height: 1.8; color: #1a1a1a">
                 When I'm not coding, I enjoy exploring new technologies,
                 contributing to open-source projects, and continuously learning
                 to stay at the forefront of web development best practices.
@@ -439,9 +577,8 @@
 
         <div class="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
           <!-- Centered Text -->
-          <div class="text-center mb-12">
+          <div class="text-center">
             <p
-              class="mb-2"
               style="
                 font-size: 16px;
                 color: #737373;
@@ -451,16 +588,11 @@
             >
               Glad you made it to the end!
             </p>
-            <p
-              style="
-                font-size: 16px;
-                color: #737373;
-                font-weight: 400;
-                line-height: 1.4;
-              "
-            >
-              Let's create something amazing together.
-            </p>
+          </div>
+
+          <!-- Let's Connect Text -->
+          <div class="text-center mb-4">
+            <h2 class="contact-connect-text">LET'S CONNECT</h2>
           </div>
 
           <!-- Social Links -->
@@ -500,6 +632,19 @@
             </a>
           </div>
         </div>
+
+        <!-- Footer -->
+        <div class="contact-footer">
+          <div class="contact-footer-left">
+            <span id="pune-time" class="footer-time"></span>
+          </div>
+          <div class="contact-footer-right">
+            <span class="footer-love"
+              >Made with <span class="heart">♥</span> Designed, built, and
+              shipped by me.</span
+            >
+          </div>
+        </div>
       </section>
     </main>
 
@@ -521,62 +666,290 @@
         });
       });
 
-      // Custom cursor for different sections
-      const sectionsWithCursors = {
-        "hero-section": "👋",
-        work: "🎨",
-        experience: "👨🏻‍💻",
-        about: "🙋‍♂️",
-        contact: "🙋‍♂️",
-      };
+      // SoundCloud Player Control
+      let soundcloudWidget = null;
+      let isPlaying = false;
+      const playButton = document.getElementById("play-button");
+      const iframe = document.getElementById("soundcloud-player");
 
-      let customCursor = null;
+      // Initialize SoundCloud Widget when ready
+      function initSoundCloudWidget() {
+        if (iframe && typeof SC !== "undefined") {
+          try {
+            soundcloudWidget = SC.Widget(iframe);
 
-      // Create custom cursor element
-      function createCustomCursor() {
-        if (!customCursor) {
-          customCursor = document.createElement("div");
-          customCursor.className = "custom-cursor";
-          customCursor.style.display = "none";
-          document.body.appendChild(customCursor);
+            soundcloudWidget.bind(SC.Widget.Events.READY, function () {
+              const playIcon = playButton.querySelector(".play-icon");
+              const pauseIcon = playButton.querySelector(".pause-icon");
+
+              soundcloudWidget.bind(SC.Widget.Events.PLAY, function () {
+                isPlaying = true;
+                if (playIcon) playIcon.style.display = "none";
+                if (pauseIcon) pauseIcon.style.display = "block";
+                if (playButton) playButton.classList.add("playing");
+                feather.replace();
+              });
+
+              soundcloudWidget.bind(SC.Widget.Events.PAUSE, function () {
+                isPlaying = false;
+                if (playIcon) playIcon.style.display = "block";
+                if (pauseIcon) pauseIcon.style.display = "none";
+                if (playButton) playButton.classList.remove("playing");
+                feather.replace();
+              });
+            });
+          } catch (error) {
+            console.error("Error initializing SoundCloud widget:", error);
+          }
         }
       }
 
-      // Show custom cursor with specific emoji
-      function showCustomCursor(emoji) {
-        return function (e) {
-          if (!customCursor) createCustomCursor();
-          customCursor.textContent = emoji;
-          customCursor.style.display = "block";
-          updateCursorPosition(e);
-        };
+      // Wait for SoundCloud API to load
+      if (typeof SC === "undefined") {
+        window.addEventListener("load", function () {
+          setTimeout(initSoundCloudWidget, 1000);
+        });
+      } else {
+        initSoundCloudWidget();
       }
 
-      // Hide custom cursor
-      function hideCustomCursor() {
-        if (customCursor) {
-          customCursor.style.display = "none";
+      // Play/Pause button click handler
+      if (playButton) {
+        playButton.addEventListener("click", function () {
+          if (soundcloudWidget) {
+            soundcloudWidget.toggle();
+          } else {
+            // If widget not ready, try to initialize
+            initSoundCloudWidget();
+            setTimeout(function () {
+              if (soundcloudWidget) {
+                soundcloudWidget.toggle();
+              }
+            }, 500);
+          }
+        });
+      }
+
+      // Avatar Click Handler - Toggle between avatars with bounce animation
+      const avatarContainer = document.querySelector(".avatar-container");
+      const avatarMain = document.getElementById("avatar-main");
+      const avatarOriginal = document.getElementById("avatar-original");
+      let isMainVisible = true;
+      let isAnimating = false;
+
+      if (avatarContainer && avatarMain && avatarOriginal) {
+        avatarContainer.addEventListener("click", function () {
+          if (isAnimating) return; // Prevent clicks during animation
+          isAnimating = true;
+
+          if (isMainVisible) {
+            // Bounce down main, bounce up original
+            avatarMain.classList.add("bounce-down");
+            avatarOriginal.style.display = "block";
+            avatarOriginal.classList.add("bounce-up");
+
+            setTimeout(() => {
+              avatarMain.style.display = "none";
+              avatarMain.classList.remove("bounce-down");
+              avatarOriginal.classList.remove("bounce-up");
+              isMainVisible = false;
+              isAnimating = false;
+            }, 400);
+          } else {
+            // Bounce down original, bounce up main
+            avatarOriginal.classList.add("bounce-down");
+            avatarMain.style.display = "block";
+            avatarMain.classList.add("bounce-up");
+
+            setTimeout(() => {
+              avatarOriginal.style.display = "none";
+              avatarOriginal.classList.remove("bounce-down");
+              avatarMain.classList.remove("bounce-up");
+              isMainVisible = true;
+              isAnimating = false;
+            }, 400);
+          }
+        });
+      }
+
+      // Highlight Toggle Functionality
+      const highlightToggle = document.getElementById("highlight-toggle");
+      const aboutContent = document.getElementById("about-content");
+      let isHighlighted = false;
+
+      function updateIcon(highlighted) {
+        const iconElement = document.getElementById("highlight-icon");
+        if (iconElement) {
+          const newIcon = highlighted ? "eye-off" : "eye";
+          // Remove existing SVG if any
+          const svg = iconElement.querySelector("svg");
+          if (svg) {
+            svg.remove();
+          }
+          // Update data-feather attribute
+          iconElement.setAttribute("data-feather", newIcon);
+          // Replace icon
+          feather.replace(iconElement);
         }
       }
 
-      // Update cursor position
-      function updateCursorPosition(e) {
-        if (customCursor) {
-          customCursor.style.left = e.clientX + "px";
-          customCursor.style.top = e.clientY + "px";
+      // Keywords to highlight
+      const keywords = [
+        "scalable",
+        "production-ready web applications",
+        "MERN stack (MongoDB, Express, React, Node.js)",
+        "Red Hat",
+        "React, Next.js, and TypeScript",
+        "design and engineering",
+        "delightful user experiences",
+        "open-source projects",
+      ];
+
+      function highlightKeywords() {
+        if (!aboutContent) return;
+
+        // Add highlighted class to change non-highlighted text color
+        aboutContent.classList.add("highlighted");
+
+        const paragraphs = aboutContent.querySelectorAll("p");
+        paragraphs.forEach((paragraph) => {
+          // Get plain text content
+          let text = paragraph.textContent || paragraph.innerText;
+
+          // Only highlight if not already highlighted
+          if (!paragraph.innerHTML.includes('class="highlight-keyword"')) {
+            // Sort keywords by length (longest first) to avoid partial matches
+            const sortedKeywords = [...keywords].sort(
+              (a, b) => b.length - a.length
+            );
+
+            sortedKeywords.forEach((keyword) => {
+              // Escape special regex characters
+              const escapedKeyword = keyword.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                "\\$&"
+              );
+              // Use word boundaries for single words, but not for phrases
+              const isPhrase = keyword.includes(" ") || keyword.includes("(");
+              const regex = isPhrase
+                ? new RegExp(`(${escapedKeyword})`, "gi")
+                : new RegExp(`\\b(${escapedKeyword})\\b`, "gi");
+
+              text = text.replace(
+                regex,
+                '<span class="highlight-keyword">$1</span>'
+              );
+            });
+
+            paragraph.innerHTML = text;
+          }
+        });
+
+        // Change icon to eye-off
+        isHighlighted = true;
+        updateIcon(true);
+      }
+
+      function highlightKeywords() {
+        if (!aboutContent) return;
+
+        // Add highlighted class to change non-highlighted text color
+        aboutContent.classList.add("highlighted");
+
+        const paragraphs = aboutContent.querySelectorAll("p");
+        paragraphs.forEach((paragraph) => {
+          // Get plain text content
+          let text = paragraph.textContent || paragraph.innerText;
+
+          // Only highlight if not already highlighted
+          if (!paragraph.innerHTML.includes('class="highlight-keyword"')) {
+            // Sort keywords by length (longest first) to avoid partial matches
+            const sortedKeywords = [...keywords].sort(
+              (a, b) => b.length - a.length
+            );
+
+            sortedKeywords.forEach((keyword) => {
+              // Escape special regex characters
+              const escapedKeyword = keyword.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                "\\$&"
+              );
+              // Use word boundaries for single words, but not for phrases
+              const isPhrase = keyword.includes(" ") || keyword.includes("(");
+              const regex = isPhrase
+                ? new RegExp(`(${escapedKeyword})`, "gi")
+                : new RegExp(`\\b(${escapedKeyword})\\b`, "gi");
+
+              text = text.replace(
+                regex,
+                '<span class="highlight-keyword">$1</span>'
+              );
+            });
+
+            paragraph.innerHTML = text;
+          }
+        });
+
+        // Change icon to eye-off
+        isHighlighted = true;
+        updateIcon(true);
+      }
+
+      function unhighlightKeywords() {
+        if (!aboutContent) return;
+
+        // Remove highlighted class to restore normal text color
+        aboutContent.classList.remove("highlighted");
+
+        const paragraphs = aboutContent.querySelectorAll("p");
+        paragraphs.forEach((paragraph) => {
+          let text = paragraph.innerHTML;
+
+          // Remove highlight spans
+          text = text.replace(
+            /<span class="highlight-keyword">(.*?)<\/span>/gi,
+            "$1"
+          );
+
+          paragraph.innerHTML = text;
+        });
+
+        // Change icon back to eye
+        isHighlighted = false;
+        updateIcon(false);
+      }
+
+      if (highlightToggle && aboutContent) {
+        highlightToggle.addEventListener("click", function () {
+          if (isHighlighted) {
+            unhighlightKeywords();
+          } else {
+            highlightKeywords();
+          }
+        });
+      }
+
+      // Pune Time Display
+      function updatePuneTime() {
+        const puneTimeElement = document.getElementById("pune-time");
+        if (puneTimeElement) {
+          const now = new Date();
+          const puneTime = new Date(
+            now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
+          );
+          const timeString = puneTime.toLocaleTimeString("en-US", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true,
+          });
+          puneTimeElement.textContent = `Pune, India • ${timeString}`;
         }
       }
 
-      // Add event listeners to all sections
-      Object.keys(sectionsWithCursors).forEach((sectionId) => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          const emoji = sectionsWithCursors[sectionId];
-          section.addEventListener("mouseenter", showCustomCursor(emoji));
-          section.addEventListener("mouseleave", hideCustomCursor);
-          section.addEventListener("mousemove", updateCursorPosition);
-        }
-      });
+      // Update time immediately and then every second
+      updatePuneTime();
+      setInterval(updatePuneTime, 1000);
     </script>
   </body>
 </html>
