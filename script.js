@@ -80,3 +80,35 @@ const progressObserver = new IntersectionObserver(
 progressBars.forEach((bar) => {
   progressObserver.observe(bar);
 });
+
+// Mobile Menu Toggle
+const mobileMenuButton = document.getElementById("mobile-menu-button");
+const mobileMenu = document.getElementById("mobile-menu");
+const menuIcon = document.getElementById("menu-icon");
+const closeIcon = document.getElementById("close-icon");
+
+if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
+  mobileMenuButton.addEventListener("click", function () {
+    const isHidden = mobileMenu.classList.contains("hidden");
+
+    if (isHidden) {
+      mobileMenu.classList.remove("hidden");
+      menuIcon.classList.add("hidden");
+      closeIcon.classList.remove("hidden");
+    } else {
+      mobileMenu.classList.add("hidden");
+      menuIcon.classList.remove("hidden");
+      closeIcon.classList.add("hidden");
+    }
+  });
+
+  // Close menu when clicking on a link
+  const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+  mobileMenuLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      mobileMenu.classList.add("hidden");
+      menuIcon.classList.remove("hidden");
+      closeIcon.classList.add("hidden");
+    });
+  });
+}
